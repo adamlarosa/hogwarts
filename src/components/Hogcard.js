@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HogDetails from './HogDetails'
+
 import augustus from '../hog-imgs/augustus_gloop.jpg'
 import bay_of_pigs from '../hog-imgs/bay_of_pigs.jpg'
 import cherub from '../hog-imgs/cherub.jpg'
@@ -18,8 +19,9 @@ class Hogcard extends Component {
     constructor() {
         super();
         this.state = {
-            display: null
+            display: false
         }
+        
     } 
 
     imageName = {
@@ -37,15 +39,15 @@ class Hogcard extends Component {
         'Trouble': trouble, 
         'TruffleShuffle': truffle 
     }
-
+ 
     drawStuff = () => {
-        if (this.state.display == null){
+        if (this.state.display === false){
             this.setState({ 
-                display: < HogDetails data={this.props} />
+                display: true
             })
         } else {
             this.setState({
-                display: null
+                display: false
             })
         }
     }
@@ -54,7 +56,7 @@ class Hogcard extends Component {
         return (
             <div onClick={this.drawStuff} className='ui eight wide column'>
                 {this.props.hog.name}<br/>
-                {this.state.display}
+                {this.state.display && <HogDetails data={this.props}/>} {/* showing details */}
                 <img src={this.imageName[this.props.hog.name]} alt="" />
                 
             </div>

@@ -7,12 +7,12 @@ class HogDetails extends React.Component {
         return (
             <div>
                 Specialty: {this.props.data.hog.specialty}<br/>
-                Greased: {this.props.data.hog.greased ? 'true' : "false"}<br/>
+                Greased: {`${this.props.data.hog.greased}`}<br/>
                 Weight : {this.props.data.hog.weight} lbs<br/>
                 Highest Medal Achieved: {this.props.data.hog['highest medal achieved']}
             </div>
         )
     }
-
+ 
 }
 export default HogDetails
