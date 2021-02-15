@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import HogDetails from './HogDetails'
 
+//begin waste of time
 import augustus from '../hog-imgs/augustus_gloop.jpg'
 import bay_of_pigs from '../hog-imgs/bay_of_pigs.jpg'
 import cherub from '../hog-imgs/cherub.jpg'
@@ -14,16 +15,16 @@ import sober from '../hog-imgs/sobriety.jpg'
 import prosciutto from '../hog-imgs/the_prosciutto_concern.jpg'
 import trouble from '../hog-imgs/trouble.jpg'
 import truffle from '../hog-imgs/truffleshuffle.jpg'
+//end waste
 
 class Hogcard extends Component {
     constructor() {
         super();
         this.state = {
-            display: false
+            details: false
         }
-        
     } 
-
+    
     imageName = {
         'Augustus Gloop': augustus,
         'Bay of Pigs': bay_of_pigs,
@@ -40,25 +41,26 @@ class Hogcard extends Component {
         'TruffleShuffle': truffle 
     }
  
-    drawStuff = () => {
-        if (this.state.display === false){
+    drawDetails = () => {
+        if (this.state.details === false){
             this.setState({ 
-                display: true
+                details: true
             })
         } else {
             this.setState({
-                display: false
+                details: false
             })
         }
     }
 
     render() {
+        const { hog } = this.props
+        const { details } = this.state
         return (
-            <div onClick={this.drawStuff} className='ui eight wide column'>
-                {this.props.hog.name}<br/>
-                {this.state.display && <HogDetails data={this.props}/>} {/* showing details */}
-                <img src={this.imageName[this.props.hog.name]} alt="" />
-                
+            <div onClick={this.drawDetails} className='ui four wide column'>
+                {hog.name}<br/>                                  {/* display name */}
+                {details && <HogDetails data={this.props}/>} {/* dynamicly display details*/}
+                <img src={this.imageName[hog.name]} alt="" />    {/* display pic*/}
             </div>
         )
     }

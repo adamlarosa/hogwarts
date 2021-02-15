@@ -38,7 +38,8 @@ class App extends Component {
   }
 
   differentDisplays = {
-    blank: null,
+    blank: null, //used for troubleshooting
+
     all: hogs.map((hog, index) => { return < Hogcard key={index} hog={hog} /> }),
     
     greased: hogs.filter(hog => { 
@@ -47,9 +48,9 @@ class App extends Component {
         return < Hogcard key={index} hog={hog} />
       }),
     
-      bigToSmall: hogs.sort((a,b) => (a.weight < b.weight) ? 1 : -1).map((hog, index) => {
-        return < Hogcard key={index} hog={hog} />
-      })
+    bigToSmall: hogs.sort((a,b) => (a.weight < b.weight) ? 1 : -1).map((hog, index) => {
+      return < Hogcard key={index} hog={hog} />
+    })
   }
   
  
